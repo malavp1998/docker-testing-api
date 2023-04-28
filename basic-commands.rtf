@@ -1,0 +1,105 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2706
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fnil\fcharset0 Menlo-Regular;}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;}
+{\*\expandedcolortbl;;\csgray\c0;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww38200\viewh21040\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 \
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f1\fs22 \cf2 \CocoaLigature0 docker images\
+\
+\
+\
+Build an image from a Dockerfile\
+piyushmalav@Piyushs-MacBook-Pro testing % docker build -t v:d .         ( should be in the same direct as our  file)\
+\
+\
+piyushmalav@piyush-malav docker-testing-api % docker login\
+Login with your Docker ID to push and pull images from Docker Hub. If you don't have a Docker ID, head over to https://hub.docker.com to create one.\
+Username: pmalav85\
+Password: \
+Login Succeeded\
+\
+\
+docker push pmalav85/javaproject:v1 \
+\
+\
+\
+\
+docker run --name javacontainer  -p 8080:8080 pmalav85/javaproject:v1\
+\
+\
+\
+\
+\
+\'97\'97\'97\'97\'97kubernetes \'97\'97\'97\'97\'97\
+\
+1 pulling image from docker hub into minikubes\
+\
+1.  minikube start\
+2.  minikube image ls\
+3.  minikube image pull pmalav85/javaproject:v1      (from dockerhub)\
+4.  minikube kubectl -- get deployments\
+5   minikube kubectl -- get pods\
+6.  kubectl get deploy -A\
+7.  kubectl delete deployment name_deployment\
+8.  minikube kubectl -- apply -f deployment.yaml      ( should be in the same direct as yaml file)\
+\
+9    minikube kubectl -- get deployments\
+10   minikube kubectl -- get pods\
+\
+\
+\
+\
+piyushmalav@piyush-malav testing % minikube kubectl -- get pods       \
+NAME                              READY   STATUS    RESTARTS   AGE\
+java-deployment-cd57fd58d-75btf   1/1     Running   0          67s\
+java-deployment-cd57fd58d-d2bp2   1/1     Running   0          67s\
+piyushmalav@piyush-malav testing % minikube kubectl -- apply -f service.yaml   \
+error: error when retrieving current configuration of:\
+Resource: "/v1, Resource=services", GroupVersionKind: "/v1, Kind=Service"\
+Name: "", Namespace: "default"\
+from server for: "service.yaml": resource name may not be empty\
+piyushmalav@piyush-malav testing % minikube kubectl -- logs -f pods/java-deployment-cd57fd58d-75btf\
+\
+\
+\
+\
+\
+minikube kubectl -- get svc\
+\
+\
+\
+piyushmalav@piyush-malav testing % minikube kubectl -- get svc \
+NAME           TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)          AGE\
+java-service   NodePort    10.101.212.48   <none>        8080:32170/TCP   6m46s\
+kubernetes     ClusterIP   10.96.0.1       <none>        443/TCP          20h\
+\
+piyushmalav@piyush-malav testing % \
+piyushmalav@piyush-malav testing % \
+\
+piyushmalav@piyush-malav testing % minikube service java-service\
+|-----------|--------------|-------------|---------------------------|\
+| NAMESPACE |     NAME     | TARGET PORT |            URL            |\
+|-----------|--------------|-------------|---------------------------|\
+| default   | java-service |        8080 | http://192.168.49.2:32170 |\
+|-----------|--------------|-------------|---------------------------|\
+\uc0\u55356 \u57283   Starting tunnel for service java-service.\
+|-----------|--------------|-------------|------------------------|\
+| NAMESPACE |     NAME     | TARGET PORT |          URL           |\
+|-----------|--------------|-------------|------------------------|\
+| default   | java-service |             | http://127.0.0.1:65313 |\
+|-----------|--------------|-------------|------------------------|\
+\
+\
+\
+\
+minikube dashboard\
+\
+\
+\
+\
+}
