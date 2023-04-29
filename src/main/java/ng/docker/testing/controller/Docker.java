@@ -11,6 +11,7 @@ public class Docker {
     public String getDockerVersion()
     {
         try {
+            System.out.println("You are using Docker Version 1");
             return "You are using Docker Version 1";
         }
         catch (Exception e)
