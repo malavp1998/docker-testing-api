@@ -11,8 +11,8 @@ public class Docker {
     public String getDockerVersion()
     {
         try {
-            System.out.println("You are using Docker Version 1");
-            return "You are using Docker Version 1";
+            System.out.println("Successfully tested AWS EC2 instances-");
+            return "Successfully tested AWS EC2 instances ";
         }
         catch (Exception e)
         {
